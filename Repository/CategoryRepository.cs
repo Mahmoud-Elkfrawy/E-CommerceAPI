@@ -1,0 +1,54 @@
+﻿using Depitest.IRepository;
+using Depitest.Model;
+
+namespace Depitest.Repository
+{
+    public class CategoryRepository : ICategoryRepository
+    {
+        AppDBContext context;
+        public CategoryRepository(AppDBContext _context)
+        {
+            context = _context;
+        }
+
+        public List<Categoray> Get()
+        {
+            List<Categoray> categorays = context.Categories.ToList();
+            return categorays;
+        }
+
+        public Categoray GetById(int id)
+        {
+            Categoray categoray = context.Categories.Find(id);
+            return categoray;
+        }
+
+        public Categoray GetByName(string name)
+        {
+            Categoray categoray = context.Categories.FirstOrDefault(x => x.Name == name);
+            return categoray;
+        }
+
+        
+        public void Add(Categoray categoray)
+        {
+            context.Categories.Add(categoray);
+            context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            Categoray categoray = GetById(id);
+            context.Categories.Remove(categoray);
+            context.SaveChanges();
+        }
+        public void Update(Categoray category)
+        {
+            Categoray categoray = GetById(category.Id);
+            context.Categories.Update(categoray);
+
+            context.SaveChanges();
+
+        }
+    }
+}
