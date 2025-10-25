@@ -1,5 +1,7 @@
 ﻿using Depitest.IRepository;
 using Depitest.Model;
+using Depitest.Repository;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +11,13 @@ namespace Depitest.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+
         ICategoryRepository _categoryRepository;
+        public CategoryController(ICategoryRepository categoryRepository)
+        {
+            //_dbContext = dbContext;
+            _categoryRepository = categoryRepository;
+        }
         [HttpGet]
         public ActionResult GetAll()
         {

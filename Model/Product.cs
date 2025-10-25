@@ -7,15 +7,14 @@ namespace Depitest.Model
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public decimal Price { get; set; }
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
         public int quantity { get; set; }
-        public string ImageAddress { get; set; }
+        public string ImageAddress { get; set; } = string.Empty;
 
-        [ForeignKey("Categoray")]
         public int CategoryId { get; set; }
-        public Categoray Categoray { get; set; }
+        public virtual Categoray? Categoray { get; set; }
     }
 }

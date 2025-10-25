@@ -7,8 +7,8 @@ namespace Depitest.Model
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        List<Product> Productss { get; set; }
+        public string Name { get; set; } = String.Empty;
+        public List<Product>? Products { get; set; }
 
     }
 }

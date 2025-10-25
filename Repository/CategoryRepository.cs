@@ -1,5 +1,6 @@
 ﻿using Depitest.IRepository;
 using Depitest.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Depitest.Repository
 {
@@ -13,13 +14,13 @@ namespace Depitest.Repository
 
         public List<Categoray> Get()
         {
-            List<Categoray> categorays = context.Categories.ToList();
+            List<Categoray> categorays = context.Categories?.ToList();
             return categorays;
         }
 
         public Categoray GetById(int id)
         {
-            Categoray categoray = context.Categories.Find(id);
+            Categoray categoray = context.Categories.Include(c => c.Products).FirstOrDefault(s=> s.Id==id);
             return categoray;
         }
 

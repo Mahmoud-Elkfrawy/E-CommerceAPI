@@ -1,5 +1,6 @@
 ﻿using Depitest.IRepository;
 using Depitest.Model;
+using Depitest.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,10 @@ namespace Depitest.Controllers
     public class UserController : ControllerBase
     {
         IUserRepository _userRepository;
+        public UserController(IUserRepository categoryRepository)
+        {
+            _userRepository = categoryRepository;
+        }
         [HttpGet]
         public ActionResult GetAll()
         {

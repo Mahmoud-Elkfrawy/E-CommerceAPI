@@ -13,7 +13,7 @@ namespace Depitest.Repository
 
         public List<User> Get()
         {
-            List<User> users = context.Users.ToList();
+            List<User> users = context.Users?.ToList();
             return users;
         }
 
@@ -47,7 +47,6 @@ namespace Depitest.Repository
             User oldUser = GetById(user.Id);
             context.Users.Update(oldUser);
             context.SaveChanges();
-
         }
     }
 }

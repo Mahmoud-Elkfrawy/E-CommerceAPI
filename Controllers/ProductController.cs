@@ -1,5 +1,6 @@
 ﻿using Depitest.IRepository;
 using Depitest.Model;
+using Depitest.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,10 @@ namespace Depitest.Controllers
     public class ProductController : ControllerBase
     {
         IProductRepository _productRepository;
+        public ProductController(IProductRepository categoryRepository)
+        {
+            _productRepository = categoryRepository;
+        }
         [HttpGet]
         public ActionResult GetAll()
         {

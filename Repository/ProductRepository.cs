@@ -14,7 +14,7 @@ namespace Depitest.Repository
 
         public List<Product> Get()
         {
-            List<Product> products = context.Products.ToList();
+            List<Product> products = context.Products?.ToList();
             return products;
         }
 
