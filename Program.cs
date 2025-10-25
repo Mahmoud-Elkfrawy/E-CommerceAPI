@@ -1,5 +1,7 @@
 
+using Depitest.IRepository;
 using Depitest.Model;
+using Depitest.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Depitest
@@ -12,10 +14,13 @@ namespace Depitest
 
             // Add services to the container.
 
+           
             builder.Services.AddControllers();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddDbContext<AppDBContext>(Options =>
-                     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); builder.Services.AddEndpointsApiExplorer();
+            Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
