@@ -1,5 +1,6 @@
 ﻿using Depitest.IRepository;
 using Depitest.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace Depitest.Repository
 {
@@ -32,6 +33,14 @@ namespace Depitest.Repository
 
         public void Add(User user)
         {
+            User newUser = new User();
+            newUser.UserName = user.UserName;
+            //newUser.Password =  PasswordHasher.HashPassword("mySecurePassword123!");
+            newUser.IsAdmin = user.IsAdmin;
+
+
+
+
             context.Users.Add(user);
             context.SaveChanges();
         }
