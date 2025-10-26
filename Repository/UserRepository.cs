@@ -35,7 +35,6 @@ namespace Depitest.Repository
         {
             User newUser = new User();
             newUser.UserName = user.UserName;
-            //newUser.Password =  PasswordHasher.HashPassword("mySecurePassword123!");
             newUser.IsAdmin = user.IsAdmin;
 
 

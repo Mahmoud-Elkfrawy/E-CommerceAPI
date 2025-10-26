@@ -20,7 +20,7 @@ namespace Depitest.Repository
 
         public Categoray GetById(int id)
         {
-            Categoray categoray = context.Categories.Include(c => c.Products).FirstOrDefault(s=> s.Id==id);
+            Categoray categoray = context.Categories.FirstOrDefault(s=> s.Id==id);
             return categoray;
         }
 
