@@ -12,13 +12,13 @@ namespace Depitest.Repository
             context = _context;
         }
 
-        public List<Categoray> Get()
+        public List<Categoray> Get() //return categorays
         {
             List<Categoray> categorays = context.Categories?.ToList();
             return categorays;
         }
 
-        public Categoray GetById(int id)
+        public Categoray GetById(int id) //return categoray by id
         {
             Categoray categoray = context.Categories.FirstOrDefault(s=> s.Id==id);
             return categoray;
